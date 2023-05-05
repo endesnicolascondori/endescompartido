@@ -1,6 +1,6 @@
 {
-    "name": "ENDES-USO-COMPARTIDO", 
-    "short_name": "ENDES-COMPARTIDO", 
+    "name": "ENDES USO COMPARTIDO", 
+    "short_name": "ENDES COMPARTIDO", 
     "start_url": ".",
     "theme_color": "#4287f5",
     "background_color": "#ffffff",
@@ -12,8 +12,8 @@
         "type": "image/png"
       },
       {
-        "src":"img/logend.png",
-        "sizes": "192x192",
+        "src":"img/ends.webp",
+        "sizes": "512x512",
         "type": "image/png"
       }
     ]
