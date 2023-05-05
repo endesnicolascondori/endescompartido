@@ -6,6 +6,7 @@ var FILES = [
   "/recursos/flow.css",
   "/recursos/filesaver.js",
   "/recursos/flow.js",
+  "/recursos/theme.js",
   "/recursos/jszip.js",
   "/recursos/xml.js"
 ];
