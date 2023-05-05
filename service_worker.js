@@ -1,8 +1,19 @@
+var CACHENAME = "cachestore";
+var FILES = [
+  "/img/male.png",
+  "/banner1.JPG",
+  "/index.html",
+  "/recursos/flow.css",
+  "/recursos/filesaver.js",
+  "/recursos/flow.js",
+  "/recursos/jszip.js",
+  "/recursos/xml.js"
+];
 // Cached core static resources 
 self.addEventListener("install",e=>{
     e.waitUntil(
-      caches.open("static").then(cache=>{
-        return cache.addAll(["./",'./img/male.png']);
+      caches.open(CACHENAME).then(cache=>{
+        return cache.addAll(FILES);
       })
     );
   });
