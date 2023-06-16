@@ -839,19 +839,23 @@
                 if(el == "Seccion04_05"){
                     //jsonFinal[el] = json2[el]
 
-
+                    
                     if(json2[el][Object.keys(json2[el])[1]].length &&  jsonFinal[el][Object.keys(json2[el])[1]].length){
+                    
 
                     let filtro = json2[el][Object.keys(json2[el])[1]].filter(el=> el.ID._text == e.target.value && el.HOGAR_ID._text == e.target.getAttribute('data-hogar'))
                     let filtrofin = jsonFinal[el][Object.keys(json2[el])[1]].filter(el=> el.ID._text == e.target.value && el.HOGAR_ID._text == e.target.getAttribute('data-hogar'))
 
                     let filtrofindifere = jsonFinal[el][Object.keys(json2[el])[1]].filter(el=> el.ID._text != e.target.value )
 
-                    if(filtro.length>0 && filtrofin.length>0 && filtrofindifere.length>0){
+                    if(filtro.length>0 && filtrofin.length>0 /*&& filtrofindifere.length>0*/){
+
+                        //console.log("dev")
                         // Recorrer los arreglos y reemplazar objetos
                         for (var i = 0; i < filtrofin.length; i++) {
                         var objeto1 = filtrofin[i];
                         var obj = filtro[i];
+                        
                         
                         // Verificar la condición para reemplazar
                         if (objeto1?.QH207?._text != 1 && obj?.QH207?._text == 1 ) {
@@ -868,6 +872,8 @@
 
 
                     }else{
+
+                        //console.log("deva")
 
                     let verificar =  json2[el][Object.keys(json2[el])[1]].ID._text == e.target.value 
                         && json2[el][Object.keys(json2[el])[1]].PERSONA_ID._text == e.target.getAttribute('data-infosalud')
@@ -906,7 +912,7 @@
                         
                         let filtrofindifere = jsonFinal[el][Object.keys(json2[el])[1]].filter(el=> el.ID._text != e.target.value )
 
-                        if(filtro.length>0 && filtrofin.length>0 && filtrofindifere.length>0){
+                        if(filtro.length>0 && filtrofin.length>0 /*&& filtrofindifere.length>0*/){
                             // Recorrer los arreglos y reemplazar objetos
                             for (var i = 0; i < filtrofin.length; i++) {
                                 var objeto1 = filtrofin[i];
@@ -937,7 +943,7 @@
                                         console.warn('si tiene el valor',jsonFinal[el],json2[el][Object.keys(json2[el])[1]])
 
 
-                                        if(json2[el][Object.keys(json2[el])[1]]?.QS802A._text == 1 && jsonFinal[el][Object.keys(json2[el])[1]]?.QS802A._text != 1){
+                                        if(json2[el][Object.keys(json2[el])[1]]?.QS802A._text == 1 && jsonFinal[el][Object.keys(json2[el])[1]]?.QS802A?._text != 1){
                                             jsonFinal[el][Object.keys(json2[el])[1]] = json2[el][Object.keys(json2[el])[1]] 
                                         }
 
