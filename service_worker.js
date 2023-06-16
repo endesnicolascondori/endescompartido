@@ -10,7 +10,7 @@ var FILES = [
   "/recursos/jszip.js",
   "/recursos/xml.js"
 ];
-// // Cached core static resources 
+// Cached core static resources 
 // self.addEventListener("install",e=>{
 //     e.waitUntil(
 //       caches.open(CACHENAME).then(cache=>{
@@ -28,10 +28,13 @@ var FILES = [
 //     );
 //   });
 
+
 // Cached core static resources
 function cacheCoreStaticResources() {
   const cache = caches.open(CACHENAME);
-  return cache.addAll(FILES);
+  for (const file of FILES) {
+    cache.put(file);
+  }
 }
 
 self.addEventListener("install", event => {
@@ -47,6 +50,3 @@ function fetchResource(request) {
 self.addEventListener("fetch", event => {
   event.respondWith(fetchResource(event.request));
 });
-
-
-
