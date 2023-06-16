@@ -10,20 +10,43 @@ var FILES = [
   "/recursos/jszip.js",
   "/recursos/xml.js"
 ];
-// Cached core static resources 
-self.addEventListener("install",e=>{
-    e.waitUntil(
-      caches.open(CACHENAME).then(cache=>{
-        return cache.addAll(FILES);
-      })
-    );
-  });
+// // Cached core static resources 
+// self.addEventListener("install",e=>{
+//     e.waitUntil(
+//       caches.open(CACHENAME).then(cache=>{
+//         return cache.addAll(FILES);
+//       })
+//     );
+//   });
   
-  // Fatch resources
-  self.addEventListener("fetch",e=>{
-    e.respondWith(
-      caches.match(e.request).then(response=>{
-        return response||fetch(e.request);
-      })
-    );
-  });
+//   // Fatch resources
+//   self.addEventListener("fetch",e=>{
+//     e.respondWith(
+//       caches.match(e.request).then(response=>{
+//         return response||fetch(e.request);
+//       })
+//     );
+//   });
+
+// Cached core static resources
+function cacheCoreStaticResources() {
+  const cache = caches.open(CACHENAME);
+  return cache.addAll(FILES);
+}
+
+self.addEventListener("install", event => {
+  event.waitUntil(cacheCoreStaticResources());
+});
+
+// Fetch resources
+function fetchResource(request) {
+  const response = caches.match(request);
+  return response || fetch(request);
+}
+
+self.addEventListener("fetch", event => {
+  event.respondWith(fetchResource(event.request));
+});
+
+
+
