@@ -1205,14 +1205,17 @@
                             } 
 
                             if(el.HOGAR_ID._text == objfinal.HOGAR_ID._text){
-                                if(el.hasOwnProperty('QS802A') && objfinal.hasOwnProperty('QS802A')){
-                                    if(el.QS802A._text == 1 && objfinal.QS802A._text != 1){
+                                if(el.hasOwnProperty('QS802A')/* && objfinal.hasOwnProperty('QS802A')*/){
+                                    if(el.QS802A._text == 1){
                                         arrayy.push(el)
-                                    }else if(el.QS802A._text != 1 && objfinal.QS802A._text == 1){
-                                        arrayy.push(objfinal)
-                                    }else{
-                                        arrayy.push(objfinal)
                                     }
+                                    // if(el.QS802A._text == 1 && objfinal.QS802A._text != 1){
+                                    //     arrayy.push(el)
+                                    // }else if(el.QS802A._text != 1 && objfinal.QS802A._text == 1){
+                                    //     arrayy.push(objfinal)
+                                    // }else{
+                                    //     arrayy.push(objfinal)
+                                    // }
                                 }
                             }
 
