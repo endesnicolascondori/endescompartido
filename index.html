@@ -1093,6 +1093,30 @@
                         }else if(Array.isArray(jsonFinal[el][Object.keys(json2[el])[1]]) && !Array.isArray(json2[el][Object.keys(json2[el])[1]])){
                             console.log("es array final y no es arr json2")
 
+                            let obj2 = json2[el][Object.keys(json2[el])[1]]
+
+                            let arrayy = []
+
+                            jsonFinal[el][Object.keys(json2[el])[1]].forEach(el => {
+                                if(el.HOGAR_ID._text != obj2.HOGAR_ID._text){
+                                    arrayy.push(el)
+                                } 
+
+                                if(el.HOGAR_ID._text == obj2.HOGAR_ID._text){
+                                    if(obj2.hasOwnProperty('QH207')){
+                                        if(obj2.QS802A._text == 1){
+                                            arrayy.push(obj2)
+                                        }
+                                    }
+                                }
+
+                            });
+
+                            // console.log("obj2ffff", obj2)
+                            // console.log("arrayyy", arrayy)
+
+                            jsonFinal[el][Object.keys(json2[el])[1]] = arrayy
+                            
 
                         }else if(Array.isArray(json2[el][Object.keys(json2[el])[1]]) && Array.isArray(jsonFinal[el][Object.keys(json2[el])[1]])){
                             console.log("los 2 son array")
@@ -1199,6 +1223,30 @@
                     }else if(Array.isArray(jsonFinal[el][Object.keys(json2[el])[1]]) && !Array.isArray(json2[el][Object.keys(json2[el])[1]])){
                         console.log("es array final y no es arr json2")
 
+
+                        let obj2 = json2[el][Object.keys(json2[el])[1]]
+
+                        let arrayy = []
+
+                        jsonFinal[el][Object.keys(json2[el])[1]].forEach(el => {
+                            if(el.HOGAR_ID._text != obj2.HOGAR_ID._text){
+                                arrayy.push(el)
+                            } 
+
+                            if(el.HOGAR_ID._text == obj2.HOGAR_ID._text){
+                                if(obj2.hasOwnProperty('QS802A')){
+                                    if(obj2.QS802A._text == 1){
+                                        arrayy.push(obj2)
+                                    }
+                                }
+                            }
+
+                        });
+
+                        // console.log("obj2ffff", obj2)
+                        // console.log("arrayyy", arrayy)
+
+                        jsonFinal[el][Object.keys(json2[el])[1]] = arrayy
 
                     }else if(Array.isArray(json2[el][Object.keys(json2[el])[1]]) && Array.isArray(jsonFinal[el][Object.keys(json2[el])[1]])){
                         console.log("los 2 son array")
