@@ -1299,8 +1299,8 @@
                         let objfinal = jsonFinal[el][Object.keys(json2[el])[1]]
                         let objson2 = json2[el][Object.keys(json2[el])[1]]
 
-                        if(objfinal.hasOwnProperty('QS802A') && objson2.hasOwnProperty('QS802A')){
-                            if (objfinal.QS802A._text != 1 && objson2.QS802A._text == 1 ) {
+                        if( objson2.hasOwnProperty('QS802A')){
+                            if ( objson2.QS802A._text == 1 ) {
 
                                 jsonFinal[el][Object.keys(json2[el])[1]] = json2[el][Object.keys(json2[el])[1]]
 
