@@ -589,16 +589,16 @@
 
                     if(filtroMujerIndi.length > 0){
                         console.log("5kkk mujer")
-                        mapcheck = filtroMujerIndi.flat().map(el => `<label class="color${el.HOGAR_ID._text} ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"><input type="checkbox" id="${el.PERSONA_ID._text}" value="${el.ID._text}" data-hogar="${el.HOGAR_ID._text}" data-infosalud="${json2.Hogar.T_05_DIG_HOGAR.NRO_INFO_S._text}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"> 
+                        mapcheck = filtroMujerIndi.flat().map(el => `<label class="color${el.HOGAR_ID._text} ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"><input type="checkbox" id="${el.PERSONA_ID._text}" value="${el.ID._text}" data-hogar="${el.HOGAR_ID._text}" data-infosalud="${json2.Hogar.T_05_DIG_HOGAR.NRO_INFO_S._text}" data-prueba="todo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"> 
                         ${el.QH02_1._text} - Hogar (${el.HOGAR_ID._text})</label>`).join('')
                         
                     }else if(filtroHombreIndi.length == 1){
                         console.log("no hay mef para individual 1 hombre")
-                        mapcheck = filtroHombreIndi.flat().map(el => `<label class="color${el.HOGAR_ID._text} ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"><input type="checkbox" id="${el.PERSONA_ID._text}" value="${el.ID._text}" data-hogar="${el.HOGAR_ID._text}" data-infosalud="${json2.Hogar.T_05_DIG_HOGAR.NRO_INFO_S._text}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"> 
+                        mapcheck = filtroHombreIndi.flat().map(el => `<label class="color${el.HOGAR_ID._text} ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"><input type="checkbox" id="${el.PERSONA_ID._text}" value="${el.ID._text}" data-hogar="${el.HOGAR_ID._text}" data-infosalud="${json2.Hogar.T_05_DIG_HOGAR.NRO_INFO_S._text}" data-prueba="todo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"> 
                         ${el.QH02_1._text} - Hogar (${el.HOGAR_ID._text})</label>`).join('')
                     }
 
-
+                    
                     
                 }
                 
@@ -626,12 +626,12 @@
 
                     if(filtroMujerIndi.length > 0){
                         console.log("5kkk")
-                        mapcheck = filtroMujerIndi.flat().map(el => `<label class="color${el.HOGAR_ID._text} ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"><input type="checkbox" id="${el.PERSONA_ID._text}" value="${el.ID._text}" data-hogar="${el.HOGAR_ID._text}" data-infosalud="${filtroHogares[0].NRO_INFO_S._text}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"> 
+                        mapcheck = filtroMujerIndi.flat().map(el => `<label class="color${el.HOGAR_ID._text} ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"><input type="checkbox" id="${el.PERSONA_ID._text}" value="${el.ID._text}" data-hogar="${el.HOGAR_ID._text}" data-infosalud="${filtroHogares[0].NRO_INFO_S._text}" data-prueba="todo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"> 
                         ${el.QH02_1._text} - Hogar (${el.HOGAR_ID._text})</label>`).join('')
                         
                     }else if(filtroHombreIndi.length == 1){
                         console.log("no hay mef para individual 1 hombre")
-                        mapcheck = filtroHombreIndi.flat().map(el => `<label class="color${el.HOGAR_ID._text} ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"><input type="checkbox" id="${el.PERSONA_ID._text}" value="${el.ID._text}" data-hogar="${el.HOGAR_ID._text}" data-infosalud="${filtroHogares[0].NRO_INFO_S._text}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"> 
+                        mapcheck = filtroHombreIndi.flat().map(el => `<label class="color${el.HOGAR_ID._text} ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"><input type="checkbox" id="${el.PERSONA_ID._text}" value="${el.ID._text}" data-hogar="${el.HOGAR_ID._text}" data-infosalud="${filtroHogares[0].NRO_INFO_S._text}" data-prueba="todo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"> 
                         ${el.QH02_1._text} - Hogar (${el.HOGAR_ID._text})</label>`).join('')
                     }/*else{
                         console.log("no hay mef para individual mas de 1 hombre")
