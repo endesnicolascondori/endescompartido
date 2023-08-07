@@ -486,6 +486,9 @@
         // }
 
 
+        let usuapoyojson = ''
+        let datahogarjson = ''
+        let datamefjson = ''
         ///////////////////////////////////////////////////////////////
         form.addEventListener('change', handleSubmit);
 
@@ -498,6 +501,7 @@
         if (!file.value.length) return;
 
         let filename3 = file.files[0].name;
+        usuapoyojson = filename3
         document.querySelector('#imgfil2').setAttribute('src', `https://iinei.inei.gob.pe/iinei/asistencia/fotos/${filename3.substring(8,filename3.indexOf("."))}.jpg`)
         console.log(filename3)
         
@@ -762,10 +766,12 @@
 
               console.log(e.target.value,e.target.getAttribute('id') /*, json2, json2.hasOwnProperty('Marcod'), Object.keys(json2)*/)
 
-            //   Object.entries(json2).forEach(entry => {
-            //     const [key, value] = entry;
-            //     console.log(key, Object.keys(value)[1]);
-            //   });
+                //   Object.entries(json2).forEach(entry => {
+                //     const [key, value] = entry;
+                //     console.log(key, Object.keys(value)[1]);
+                //   });
+              datahogarjson += e.target.getAttribute('data-hogar')
+              datamefjson += e.target.getAttribute('id')
               console.log(json2)
               
 
@@ -1317,6 +1323,7 @@
 
 
 
+            console.log("json2hhhhhhhh", json2)
 
            
               
@@ -1340,13 +1347,77 @@
                 //   setTimeout(() => {
                 //     window.location.reload();  
                 //   }, 3500);
+
+
+                let pellll = {
+                    // "departamento":"",
+                    // "equipo":"",
+                    "conglomerado":usuapoyojson.substring(4, 8),
+                    "vivienda":json2.Marco.T_MARCO.CONGLOMERADO._text == usuapoyojson.substring(4, 8) ? json2.Marco.T_MARCO.NSELV._text:"--" ,
+                    "hogar":datahogarjson,
+                    "mef":datamefjson,
+                    "principal":document.querySelector("#nombreArch").textContent.substring(8,16),
+                    "apoyo":usuapoyojson.substring(8,16),
+                    "infoprincipal":JSON.stringify(jsonFinal),
+                    "infoapoyo":JSON.stringify(json2)
+                }
+
+                // setTimeout(() => {
+                //     console.log("iiiiiiiiikkkkkkkkkk")
+                //     enviarServidor(pellll)
+                
+                // }, 1500);
+                enviarServidor(pellll)
             }
         })
 
 
         ////////////////////////////////////////////////////////////////////////////////
 
-    
+
+        async function postData(url, data) {
+            try {
+                const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                throw new Error('Network response was not ok.');
+                }
+
+                const responseData = await response.json();
+                return responseData;
+            } catch (error) {
+                console.error('Error:', error);
+                return null;
+            }
+        }
+
+
+
+
+        function enviarServidor(arr){
+            // Ejemplo de usohttps://aplications.inei.gob.pe/WebEndesEncuesta/public/api/
+            const url = 'https://aplications.inei.gob.pe/WebEndesEncuesta/public/api/compartido?';
+            //const data = jsondata
+
+
+            postData(url, arr)
+            .then(responseData => {
+                if (responseData) {
+                console.log('Respuesta del servidor:', responseData);
+
+                  console.log("respuesta del servidor post")  
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
 
 
         //////////////////////////////////////////////////////////////////////////////
