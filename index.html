@@ -1347,13 +1347,25 @@
                 //   setTimeout(() => {
                 //     window.location.reload();  
                 //   }, 3500);
+                let dev = ''
+                if(Array.isArray(json2.Marco.T_MARCO)){
+                    json2.Marco.T_MARCO.forEach(el => {
+                        if(el.CONGLOMERADO._text == usuapoyojson.substring(4, 8)){
+                            dev =el.NSELV._text
+                        }
+                    });
+                }else{
+                    if(json2.Marco.T_MARCO.CONGLOMERADO._text == usuapoyojson.substring(4, 8) ){
+                        dev = json2.Marco.T_MARCO.NSELV._text
+                    }
+                }
 
 
                 let pellll = {
                     // "departamento":"",
                     // "equipo":"",
                     "conglomerado":usuapoyojson.substring(4, 8),
-                    "vivienda":json2.Marco.T_MARCO.CONGLOMERADO._text == usuapoyojson.substring(4, 8) ? json2.Marco.T_MARCO.NSELV._text:"--" ,
+                    "vivienda": dev, //json2.Marco.T_MARCO.CONGLOMERADO._text == usuapoyojson.substring(4, 8) ? json2.Marco.T_MARCO.NSELV._text:"--" ,
                     "hogar":datahogarjson,
                     "mef":datamefjson,
                     "principal":document.querySelector("#nombreArch").textContent.substring(8,16),
