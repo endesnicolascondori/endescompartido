@@ -1170,12 +1170,18 @@
                             let objfinal = jsonFinal[el][Object.keys(json2[el])[1]]
                             let objson2 = json2[el][Object.keys(json2[el])[1]]
 
+                            console.warn(objfinal)
+                            console.warn(objson2)
+
                             if(objfinal.hasOwnProperty('QH207') && objson2.hasOwnProperty('QH207')){
                                 if (objfinal.QH207._text != 1 && objson2.QH207._text == 1 ) {
-
+                                    console.log("weeeeee1")
                                     jsonFinal[el][Object.keys(json2[el])[1]] = json2[el][Object.keys(json2[el])[1]]
 
                                 }
+                            }else if(!objfinal.hasOwnProperty('QH207') && objson2.hasOwnProperty('QH207')){
+                                    console.log("weeeeee2")
+                                   jsonFinal[el][Object.keys(json2[el])[1]] = json2[el][Object.keys(json2[el])[1]]
                             }
                         }
                         
