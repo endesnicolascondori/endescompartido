@@ -109,7 +109,7 @@
             <label for="file2" class="flex flex-col items-center justify-center w-full h-64    rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700  ">
                 <div class="flex flex-col items-center justify-center pt-5 pb-6"> 
                     <img class="w-20 h-20 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 mb-3" id="imgfil" src="img/male.png" alt="Bordered avatar">
-                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click para subir ZIP</span> o arrastrar y soltar ZIP v1.1</p>
+                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click para subir ZIP</span> o arrastrar y soltar ZIP v1.2</p>
                     <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Encuestadora Principal</h5>
 
                     <p class="text-xs text-gray-500 dark:text-gray-400">Elegir archivo</p>
@@ -1100,6 +1100,8 @@
                                         if(obj2.hasOwnProperty('QH207')){
                                             if(obj2.QS802A._text == 1 || !el.hasOwnProperty('QH207')){
                                                 arrayy.push(obj2)
+                                            }else{
+                                                arrayy.push(el)
                                             }
                                         }
                                     }else{
@@ -1208,6 +1210,8 @@
                                     if(el.hasOwnProperty('QS802A')/* && objfinal.hasOwnProperty('QS802A')*/){
                                         if(el.QS802A._text == 1 || !objfinal.hasOwnProperty('QS802A')){
                                             arrayy.push(el)
+                                        }else{
+                                            arrayy.push(el)
                                         }
                                     }
                                 }else{
@@ -1239,6 +1243,8 @@
                                         if(obj2.QS802A._text == 1 || !el.hasOwnProperty('QS802A')){
                                             arrayy.push(obj2)
                                         }
+                                    }else{
+                                        arrayy.push(el)
                                     }
                                 }else{
                                     arrayy.push(el)
