@@ -109,7 +109,7 @@
             <label for="file2" class="flex flex-col items-center justify-center w-full h-64    rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700  ">
                 <div class="flex flex-col items-center justify-center pt-5 pb-6"> 
                     <img class="w-20 h-20 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 mb-3" id="imgfil" src="img/male.png" alt="Bordered avatar">
-                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click para subir ZIP</span> o arrastrar y soltar ZIP v1.2</p>
+                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click para subir ZIP</span> o arrastrar y soltar ZIP v1.3</p>
                     <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Encuestadora Principal</h5>
 
                     <p class="text-xs text-gray-500 dark:text-gray-400">Elegir archivo</p>
@@ -954,32 +954,10 @@
 
               if(e.target.getAttribute('data-hogar') > 1){
                     Object.keys(json2).forEach(el => {
-                        if(el.startsWith('Hogar') || el.startsWith('Seccion01') || el.startsWith('Seccion03') || el == 'Visita'){
+                        if(el.startsWith('Hogar') || el.startsWith('Seccion01') ||  el.startsWith('Seccion03') || el == 'Visita'){
                             //console.log(el)
                             if(json2.hasOwnProperty(el)){
 
-                                //json2[el].push('HOLA')
-                                // console.log(Object.keys(json2[el])[1])
-                                // console.log(json2[el][Object.keys(json2[el])[1]])
-
-                                // if(json2[el][Object.keys(json2[el])[1]].length){
-                                //     //console.log("es array")
-                                //     let filtro = json2[el][Object.keys(json2[el])[1]]
-                                //      .filter(pe=>pe.ID._text == e.target.value && pe.PERSONA_ID?._text == e.target.getAttribute('data-infosalud') 
-                                //      && pe.HOGAR_ID._text == e.target.getAttribute('data-hogar'))
-
-                                //     console.log("es array",filtro)  
-                                // }else{
-                                //     //console.log("es un obj")
-
-                                //     let verificar =  json2[el][Object.keys(json2[el])[1]].ID._text == e.target.value 
-                                //     && json2[el][Object.keys(json2[el])[1]].PERSONA_ID?._text == e.target.getAttribute('data-infosalud')
-                                //     && json2[el][Object.keys(json2[el])[1]].HOGAR_ID?._text == e.target.getAttribute('data-hogar')
-
-                                //     console.log("es un obj", verificar)
-                                // }
-
-                                //------------------------------------------------------------------
 
                                 if(json2[el][Object.keys(json2[el])[1]].length){
                                     
@@ -1034,6 +1012,7 @@
 
                             }
                         }
+
                 });
               }
 
@@ -1331,8 +1310,74 @@
 
 
 
-            console.log("jsonfinal", jsonFinal)
+            console.log("jsonfinal...", jsonFinal)
 
+            Object.keys(jsonFinal).forEach(el => {
+
+                
+                if(Array.isArray(jsonFinal[el][Object.keys(jsonFinal[el])[1]])){
+
+                    if(el.startsWith('CI') ||  el.startsWith('CARATULA_INDI') ||  el.startsWith('DISCAPA') || el.startsWith('Seccion01') || el.startsWith('Seccion03') || el.startsWith('CSVISITA') || el.startsWith('Sa') || el.startsWith('CAP04_') || el == "CSSECCION_08" || el == "Seccion04_05" ){
+                        //console.log(el, jsonFinal[el][Object.keys(jsonFinal[el])[1]])
+
+                        jsonFinal[el][Object.keys(jsonFinal[el])[1]].sort((a, b) => {
+                            if (a?.HOGAR_ID._text === b?.HOGAR_ID._text) {
+                                return a?.PERSONA_ID._text - b?.PERSONA_ID._text;
+                            }
+                            return a?.HOGAR_ID._text - b?.HOGAR_ID._text;
+                        });
+
+                        //console.log(el, jsonFinal[el][Object.keys(jsonFinal[el])[1]])
+                    }
+
+
+                    if( el?.startsWith('Seccion01')){
+                        //jsonFinal[el][Object.keys(jsonFinal[el])[1]] = ["h"]
+                        let arrDepuracion = []
+
+                        console.log("premier",jsonFinal[el], jsonFinal[el][Object.keys(jsonFinal[el])[1]])
+
+                        jsonFinal[el][Object.keys(jsonFinal[el])[1]].forEach(el => {
+                            
+                            if(arrDepuracion[arrDepuracion.length - 1]?.ID._text == el.ID._text && arrDepuracion[arrDepuracion.length - 1]?.HOGAR_ID._text == el.HOGAR_ID._text && arrDepuracion[arrDepuracion.length - 1]?.PERSONA_ID._text == el.PERSONA_ID._text ){
+                                console.log("no inserto nada")
+                            }else{
+                                arrDepuracion.push(el)
+                            }
+                            
+                        });
+
+                        jsonFinal[el][Object.keys(jsonFinal[el])[1]] = arrDepuracion
+                        //console.log("eldd",arrDepuracion)
+
+                    }
+
+
+                }
+
+                
+                
+            })
+
+
+            console.log("jsonfinal...ORDENADO", jsonFinal)
+
+
+            // let arr = [
+            //     {"hogar_id":3, "PERSONA_ID":5},
+            //     {"hogar_id":1, "PERSONA_ID":2},
+            //     {"hogar_id":1, "PERSONA_ID":1},
+            //     {"hogar_id":2, "PERSONA_ID":4}
+            // ]
+
+            // arr.sort((a, b) => {
+            //     if (a.hogar_id === b.hogar_id) {
+            //         return a.PERSONA_ID - b.PERSONA_ID;
+            //     }
+            //     return a.hogar_id - b.hogar_id;
+            // });
+
+            // console.error("ordenado",arr);
 
 
             console.log("json2hhhhhhhh", json2)
