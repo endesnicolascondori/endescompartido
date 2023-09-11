@@ -766,10 +766,6 @@
 
               console.log(e.target.value,e.target.getAttribute('id') /*, json2, json2.hasOwnProperty('Marcod'), Object.keys(json2)*/)
 
-                //   Object.entries(json2).forEach(entry => {
-                //     const [key, value] = entry;
-                //     console.log(key, Object.keys(value)[1]);
-                //   });
               datahogarjson += e.target.getAttribute('data-hogar')
               datamefjson += e.target.getAttribute('id')
               console.log(json2)
@@ -777,24 +773,16 @@
 
               if(e.target.getAttribute('data-prueba') == "todo"){
                     Object.keys(json2).forEach(el => {
-                        if(el.startsWith('CI') || el.startsWith('CARATULA_INDI') || el.startsWith('DISCAPA')/* || el.startsWith('CS') || el.startsWith('Sa') || el.startsWith('CAP04_') || el.startsWith('Seccion04_05')*/ ){
+                        if(el.startsWith('CI') || el.startsWith('CARATULA_INDI') || el.startsWith('DISCAPA') /* || el.startsWith('CS') || el.startsWith('Sa') || el.startsWith('CAP04_') || el.startsWith('Seccion04_05')*/ ){
                             //console.log(el)
                             if(json2.hasOwnProperty(el)){
 
-                                //json2[el].push('HOLA')
-                                //console.log(Object.keys(json2[el])[1])
 
                                 if(json2[el][Object.keys(json2[el])[1]].length){
                                     
                                     let filtro = json2[el][Object.keys(json2[el])[1]]
                                     .filter(pe=>pe.ID._text == e.target.value && pe.PERSONA_ID._text == e.target.getAttribute('id') && pe.HOGAR_ID._text == e.target.getAttribute('data-hogar'))
 
-                                    // let filtro2 = json2[el][Object.keys(json2[el])[1]]
-                                    // .filter(pe=>pe.ID._text == e.target.value && pe.QH200_REF_S4?.hasOwnProperty("_text"))
-                                    // console.log("FILTRO NEW 2", filtro2)
-                                    //console.log("devvv", json2[el][Object.keys(json2[el])[1]])
-
-                                    // jsonFinal[el][Object.keys(json2[el])[1]].push(pe)
 
                                     if(jsonFinal[el]?.[Object.keys(json2[el])[1]] ){
 
@@ -815,38 +803,17 @@
                                             jsonFinal[el][Object.keys(json2[el])[1]] = filtro.length == 1 ? filtro[0]:filtro
                                     }
 
-                                    
 
-                                    // filtro.forEach(pe => {
-                                    //     // jsonFinal[el][Object.keys(json2[el])[1]].push(pe)
-                                    //     if(jsonFinal[el][Object.keys(json2[el])[1]].length ){
-                                    //        console.log('si es un array',jsonFinal[el][Object.keys(json2[el])[1]])
-                                    //        jsonFinal[el][Object.keys(json2[el])[1]].push(pe)
-                                    //     }else{
-                                    //         let valAinsertar = json2[el][Object.keys(json2[el])[1]]
-                                    //         let valInicial = jsonFinal[el][Object.keys(json2[el])[1]]
-                                    //         jsonFinal[el][Object.keys(json2[el])[1]] = [valInicial, valAinsertar]
-                                    //         console.log('no es un array')
-                                    //     }
-                                    // });
-                                    //jsonFinal[el][Object.keys(json2[el])[1]].push(filtro)
-
-                                    //console.log(jsonFinal[el][Object.keys(json2[el])[1]].flat())
-                                    //jsonFinal[el][Object.keys(json2[el])[1]].flat()
 
                                 }else{
-                                //console.log(json2[el][Object.keys(json2[el])[1]])
-                                //console.log('j', json2[el][Object.keys(json2[el])[1]])
+
 
                                 let verificar =  json2[el][Object.keys(json2[el])[1]].ID._text == e.target.value 
                                 && json2[el][Object.keys(json2[el])[1]].PERSONA_ID._text == e.target.getAttribute('id')
                                 && json2[el][Object.keys(json2[el])[1]].HOGAR_ID._text == e.target.getAttribute('data-hogar')
 
                                 if(verificar){
-                                    //jsonFinal[el][Object.keys(json2[el])[1]] = ['hh']
-                                    // let aarr = []
 
-                                    // aarr.push(jsonFinal[el]?.[Object.keys(json2[el])[1]])
 
                                         if(jsonFinal[el]?.[Object.keys(json2[el])[1]] ){
                                             console.warn('si tiene el valor',jsonFinal[el],json2[el][Object.keys(json2[el])[1]])
@@ -871,9 +838,7 @@
                                 }
                                 }
                                 
-                                // console.log(filtro)
 
-                                //console.log( json2[el][Object.keys(json2[el])[1]].length)
                             }
                         }
                 });
@@ -952,7 +917,7 @@
 
 
 
-              if(e.target.getAttribute('data-hogar') > 1){
+              if(e.target.getAttribute('data-hogar') /*> 1*/){
                     Object.keys(json2).forEach(el => {
                         if(el.startsWith('Hogar') || el.startsWith('Seccion01') ||  el.startsWith('Seccion03') || el == 'Visita'){
                             //console.log(el)
@@ -960,16 +925,22 @@
 
 
                                 if(json2[el][Object.keys(json2[el])[1]].length){
+
+                                    ///console.log("dentrooooo array")
                                     
                                     let filtro = json2[el][Object.keys(json2[el])[1]]
                                     .filter(pe=>pe.ID._text == e.target.value  && pe.HOGAR_ID._text == e.target.getAttribute('data-hogar'))
 
+                                    //console.log("dentrooooo array", filtro)
 
                                     if(jsonFinal[el]?.[Object.keys(json2[el])[1]] ){
 
                                         if(jsonFinal[el][Object.keys(json2[el])[1]].length ){
+                                            
                                             jsonFinal[el][Object.keys(json2[el])[1]].push(filtro)
                                             jsonFinal[el][Object.keys(json2[el])[1]] =jsonFinal[el][Object.keys(json2[el])[1]].flat()
+
+                                            //console.log("dentro cuestiona hogar", el, jsonFinal)
                                         }else{ 
                                             let valAinsertar = filtro
                                             let valInicial = jsonFinal[el][Object.keys(json2[el])[1]]
@@ -983,8 +954,13 @@
 
                                 }else{
                                 
+                                    console.log("dentrooooo no array", el)
+
                                 let verificar =  json2[el][Object.keys(json2[el])[1]].ID._text == e.target.value 
                                 && json2[el][Object.keys(json2[el])[1]].HOGAR_ID?._text == e.target.getAttribute('data-hogar')
+
+                                console.log("dentrooooo no array verificar", json2[el][Object.keys(json2[el])[1]].ID._text, e.target.value)
+                                console.log("dentrooo data-hogar", json2[el][Object.keys(json2[el])[1]], e.target.getAttribute('data-hogar'))    
 
                                     if(verificar){
 
@@ -1109,9 +1085,6 @@
                                 let filtrofindifere = jsonFinal[el][Object.keys(json2[el])[1]].filter(el=> el.ID._text != e.target.value)
                                 let filtrofindiferev2 = jsonFinal[el][Object.keys(json2[el])[1]].filter(el=> el.HOGAR_ID._text != e.target.getAttribute('data-hogar'))
 
-                                // console.error("filtro", filtro)
-                                // console.error("filtrofin", filtrofin)
-                                // console.error("filtrofindifere", filtrofindifere)
 
                                 if(filtrofin.length == 0){
                                     console.log("el hogar seleccionado no esta en el archivo subido")
@@ -1223,10 +1196,15 @@
                             } 
 
                             if(el.ID._text == obj2.ID._text){
+                                
                                 if(el.HOGAR_ID._text == obj2.HOGAR_ID._text){
+                                   
                                     if(obj2.hasOwnProperty('QS802A')){
+                                        console.log("-----------------QS802A")
                                         if(obj2.QS802A._text == 1 || !el.hasOwnProperty('QS802A')){
                                             arrayy.push(obj2)
+                                        }else{
+                                            arrayy.push(el)
                                         }
                                     }else{
                                         arrayy.push(el)
@@ -1321,18 +1299,54 @@
                         //console.log(el, jsonFinal[el][Object.keys(jsonFinal[el])[1]])
 
                         jsonFinal[el][Object.keys(jsonFinal[el])[1]].sort((a, b) => {
-                            if (a?.HOGAR_ID._text === b?.HOGAR_ID._text) {
-                                return a?.PERSONA_ID._text - b?.PERSONA_ID._text;
-                            }
-                            return a?.HOGAR_ID._text - b?.HOGAR_ID._text;
-                        });
 
-                        //console.log(el, jsonFinal[el][Object.keys(jsonFinal[el])[1]])
+                            const IDa = parseInt(a.ID._text);
+                        const IDb = parseInt(b.ID._text);
+
+                        if (IDa !== IDb) {
+                            return IDa - IDb;
+                        }
+
+                        const HOGARa = parseInt(a.HOGAR_ID._text);
+                        const HOGARb = parseInt(b.HOGAR_ID._text);
+
+                        if (HOGARa !== HOGARb) {
+                            return HOGARa - HOGARb;
+                        }
+
+                        const PERSONa = parseInt(a.PERSONA_ID._text);
+                        const PERSONb = parseInt(b.PERSONA_ID._text);
+                
+                        if (PERSONa !== PERSONb) {
+                            return PERSONa - PERSONb;
+                        }
+
+                        });
+                    }
+
+
+                    if(el == "Visita" ||  el.startsWith('Hogar')  ){
+                        
+                        jsonFinal[el][Object.keys(jsonFinal[el])[1]].sort((a, b) => {
+                            const IDa = parseInt(a.ID._text);
+                            const IDb = parseInt(b.ID._text);
+
+                            if (IDa !== IDb) {
+                                return IDa - IDb;
+                            }
+
+                            const HOGARa = parseInt(a.HOGAR_ID._text);
+                            const HOGARb = parseInt(b.HOGAR_ID._text);
+                            if (HOGARa !== HOGARb) {
+                                return HOGARa - HOGARb;
+                            }
+
+                        });
                     }
 
 
                     if( el?.startsWith('Seccion01')){
-                        //jsonFinal[el][Object.keys(jsonFinal[el])[1]] = ["h"]
+
                         let arrDepuracion = []
 
                         console.log("premier",jsonFinal[el], jsonFinal[el][Object.keys(jsonFinal[el])[1]])
