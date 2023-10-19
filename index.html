@@ -1396,8 +1396,31 @@
                             
                         });
 
+
+                        // let nuevoArray = arraySinDuplicadosv2.flat().map(objeto => {
+                        //         delete objeto.infosalud;
+                        //         delete objeto.color;
+                        //         return objeto;
+                        //     });    
+                        // arr = nuevoArray
+
                         jsonFinal[el][Object.keys(jsonFinal[el])[1]] = arrDepuracion
                         //console.log("eldd",arrDepuracion)
+
+                    }
+
+
+                    if( el?.startsWith('Seccion01')){
+
+
+                        let nuevoArray = jsonFinal[el][Object.keys(jsonFinal[el])[1]].flat().map(objeto => {
+                                delete objeto.infosalud;
+                                delete objeto.color;
+                                return objeto;
+                            });    
+                        //arr = nuevoArray
+
+                        jsonFinal[el][Object.keys(jsonFinal[el])[1]] = nuevoArray
 
                     }
 
